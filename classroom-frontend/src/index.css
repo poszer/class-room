@@ -1,0 +1,273 @@
+/* ========================== */
+/* 🧭 Layout หลัก              */
+/* ========================== */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: #f8f9fa;
+  font-family: "Sarabun", system-ui, sans-serif;
+}
+
+aside {
+  width: 260px;
+  background: #fff;
+  padding: 15px;
+  border-right: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* ✅ ปุ่มสลับอยู่ล่าง */
+  overflow-y: auto;
+}
+
+main {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* ========================== */
+/* 🏫 Sidebar                 */
+/* ========================== */
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.sidebar h5 {
+  font-size: 14px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-list {
+  margin-top: 10px;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 20px;
+  color: #434343;
+  cursor: pointer;
+}
+
+.filter-item input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+}
+
+/* ========================== */
+/* 📆 FullCalendar            */
+/* ========================== */
+.calendar-wrapper {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.fc-toolbar-title {
+  font-size: 3rem !important;
+  font-weight: 600 !important;
+  color: #333;
+}
+
+.fc-col-header-cell-cushion {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.fc-timegrid-slot-label-cushion {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* ========================== */
+/* 🟦 ปุ่มสลับมุมมอง          */
+/* ========================== */
+.fc-button-group .fc-button {
+  background: #fff !important;
+  color: #007bff !important;
+  border: 1px solid #007bff !important;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  transition: 0.2s ease;
+}
+
+.fc-button-group .fc-button:hover {
+  background: #e7f0ff !important;
+}
+
+.fc-button-group .fc-button-active {
+  background: #007bff !important;
+  color: #fff !important;
+}
+
+/* ========================== */
+/* 📝 Event                   */
+/* ========================== */
+.fc-event {
+  border-radius: 6px !important;
+  padding: 4px !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease;
+}
+
+.fc-event:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+/* ========================== */
+/* 🖱️ Scrollbar               */
+/* ========================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* ========================== */
+/* 🟩 ปุ่มทั่วไป              */
+/* ========================== */
+button.btn-success {
+  font-weight: 500;
+  padding: 1px 1px;
+  font-size: 1.4rem;
+}
+
+/* ========================== */
+/* 🗓️ ฟอนต์ตัวเลขในปฏิทิน    */
+/* ========================== */
+.fc-daygrid-day-number {
+  color: #3b3a3a;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: "Sarabun", sans-serif;
+}
+
+.fc-daygrid-day {
+  background-color: #f9f9f9;
+}
+
+.fc-day-today {
+  background-color: #e3f2fd !important;
+}
+
+/* ปุ่มปกติ */
+.fc .fc-button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 6px !important;
+  transition: all 0.2s ease;
+}
+
+/* ปุ่ม hover */
+.fc .fc-button:hover {
+  background-color: #e6f0ff !important;
+  color: #0056b3 !important;
+}
+
+/* ปุ่ม active */
+.fc .fc-button.fc-button-active {
+  background-color: #1196ee !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+}
+
+/* ========================== */
+/* 🟧 ปุ่ม Approve / Reject   */
+/* ========================== */
+.action-btn {
+  min-width: 110px;
+  height: 36px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem !important;   /* 👈 ขนาดตัวอักษร */
+  font-weight: 600 !important;  /* 👈 ความหนา */
+  padding: 0 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.action-btn svg,
+.action-btn span {
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ========================== */
+/* 📱 Responsive              */
+/* ========================== */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar-top,
+  .sidebar-bottom {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
