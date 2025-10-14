@@ -15,7 +15,7 @@ aside {
   border-right: 1px solid #e5e5e5;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;  /* ✅ ปุ่มสลับอยู่ล่าง */
+  justify-content: space-between;
   overflow-y: auto;
 }
 
@@ -227,8 +227,8 @@ button.btn-success {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem !important;   /* 👈 ขนาดตัวอักษร */
-  font-weight: 600 !important;  /* 👈 ความหนา */
+  font-size: 1rem !important;
+  font-weight: 600 !important;
   padding: 0 10px;
   border-radius: 6px;
   white-space: nowrap;
@@ -243,6 +243,16 @@ button.btn-success {
 .action-btn:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+/* ========================== */
+/* 🟡 ขอบโค้ง fc-view-harness */
+/* ========================== */
+.fc-view-harness {
+  border-radius: 20px !important;         /* ✅ ขอบโค้งนอก */
+  overflow: hidden !important;           /* ซ่อนมุมเกิน */
+  border: 1px solid #e5e5e5;             /* เส้นขอบนอกบาง ๆ */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* เงาสวย ๆ */
 }
 
 /* ========================== */
