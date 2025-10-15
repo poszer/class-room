@@ -76,7 +76,7 @@ function BookingModal({ onClose, onSuccess }) {
               <option value="">-- Select a classroom --</option>
               {rooms.map((room) => (
                 <option key={room.id} value={room.id}>
-                  {room.name} (จุ {room.capacity} คน) - {room.location}
+                  {room.name} ({room.capacity} Seats) 
                 </option>
               ))}
             </Form.Select>
@@ -128,16 +128,7 @@ function BookingModal({ onClose, onSuccess }) {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>User ID</Form.Label>
-            <Form.Control
-              type="text"
-              value={userCode}
-              onChange={(e) => setUserCode(e.target.value)}
-              placeholder="Such PSU1234"
-              required
-            />
-          </Form.Group>
+
 
           <Form.Group className="mb-3">
             <Form.Label>Objective</Form.Label>

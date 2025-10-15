@@ -8,7 +8,7 @@ function Sidebar({
   view,
   setView,
 }) {
-  const rooms = ["Room A", "Room B", "Room C"]; // ✅ รายชื่อห้อง
+  const rooms = ["Classroom 1", "Classroom 2", "Meeting room"]; // ✅ รายชื่อห้อง
 
   // ✅ ติ๊ก Select All อัตโนมัติเมื่อเปิดหน้า
   useEffect(() => {
