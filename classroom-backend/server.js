@@ -25,7 +25,6 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"]
 }));
-
 // 📦 ให้ Express อ่าน JSON ได้
 app.use(express.json());
 

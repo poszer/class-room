@@ -9,8 +9,8 @@ function CalendarView({ selectedRooms }) {
   const [bookings, setBookings] = useState([]);
   const [allBookings, setAllBookings] = useState([]);
   const calendarRef = useRef(null);
-
-  const API_URL = "http://127.0.0.1:8080/api/bookings";
+  const API_URL = "https://medipe2.psu.ac.th:3000/api/bookings"
+  //const API_URL = "http://127.0.0.1:8080/api/bookings";
 
   // 🎨 สีประจำห้อง (ให้ตรงกับชื่อห้องใน DB)
   const roomColors = {
