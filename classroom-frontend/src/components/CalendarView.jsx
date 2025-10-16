@@ -12,48 +12,56 @@ function CalendarView({ selectedRooms }) {
 
   const API_URL = "http://127.0.0.1:8080/api/bookings";
 
-  // 🎨 สีประจำห้อง
+  // 🎨 สีประจำห้อง (ให้ตรงกับชื่อห้องใน DB)
   const roomColors = {
-    "Room A": "#147253ff",
-    "Room B": "#eecb32ff",
-    "Room C": "#ea6d6dff",
-    default: "#6c757d",
+    "Classroom 1": "#147253ff",  
+    "Classroom 2": "#eecb32ff",  
+    "Meeting room": "#ea6d6dff", 
+    default: "#6c757d",          
   };
 
-  // 🧭 แปลงวันที่ UTC → Local
-  const makeLocalDate = (utcString, timeStr) => {
-    const utcDate = new Date(utcString);
-    const year = utcDate.getFullYear();
-    const month = utcDate.getMonth();
-    const day = utcDate.getDate();
+  // 🧭 แปลงวันที่ + เวลา (จาก backend) เป็น Local Date
+  const makeLocalDate = (dateString, timeStr) => {
+    const baseDate = new Date(dateString);
+    const year = baseDate.getFullYear();
+    const month = baseDate.getMonth();
+    const day = baseDate.getDate();
     const [hh, mm, ss = "00"] = timeStr.split(":").map(Number);
     return new Date(year, month, day, hh, mm, ss);
   };
 
-  // ✅ โหลดข้อมูลจาก API
+  // ✅ โหลดข้อมูลการจองจาก API
   useEffect(() => {
-    axios.get(API_URL).then((res) => {
-      setAllBookings(res.data);
-    });
+    axios
+      .get(API_URL)
+      .then((res) => {
+        setAllBookings(res.data);
+      })
+      .catch((err) => {
+        console.error("❌ Error fetching bookings:", err);
+      });
   }, []);
 
-  // ✅ แปลงข้อมูลการจอง → Event
+  // ✅ กรองข้อมูลตามห้องที่เลือก แล้วแปลงเป็น Event
   useEffect(() => {
-    const filtered = allBookings.filter((item) =>
-      selectedRooms.includes(item.room_name.replace("ห้อง", "Room").trim())
-    );
+    const filtered =
+      selectedRooms.length === 0
+        ? allBookings
+        : allBookings.filter((item) =>
+            selectedRooms.includes(item.room_name.trim())
+          );
 
     const events = filtered.map((item) => {
       let bgColor = roomColors[item.room_name] || roomColors.default;
-      let textColor = "#fff";
+      let textColor = "#ffffff";
 
-      // 🟡 Pending → พื้นหลังเหลือง ตัวหนังสือดำ
+      // 🟡 สีตามสถานะ
       if (item.status === "pending") {
-        bgColor = "#5c5c5aff"; // ✅ สีเหลืองอ่อน (แบบไฮไลท์)
-        textColor = "#ffffffff";  // 🖤 ตัวหนังสือสีดำ
+        bgColor = "#000000";  // เหลืองอ่อน
+        textColor = "#000000";
       } else if (item.status === "rejected") {
-        bgColor = "#e1e505ff"; // เทาอ่อน
-        textColor = "#fe0000ff";
+        bgColor = "#e1e1e1";  // เทาอ่อน
+        textColor = "#ff0000";
       }
 
       return {
@@ -70,7 +78,7 @@ function CalendarView({ selectedRooms }) {
     setBookings(events);
   }, [selectedRooms, allBookings]);
 
-  // ✅ scroll ไปยังเวลาปัจจุบัน
+  // ✅ scroll ไปยังเวลาปัจจุบันอัตโนมัติ
   useEffect(() => {
     const calendarApi = calendarRef.current?.getApi();
     if (calendarApi) {
@@ -84,7 +92,7 @@ function CalendarView({ selectedRooms }) {
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth" // 🗓️ เริ่มต้นที่มุมมองเดือน
+        initialView="dayGridMonth"
         headerToolbar={{
           left: "prev,next today",
           center: "title",
@@ -92,7 +100,7 @@ function CalendarView({ selectedRooms }) {
         }}
         height="90vh"
         events={bookings}
-        displayEventTime={false} // ⬅️ ไม่โชว์เวลาอัตโนมัติด้านหน้า
+        displayEventTime={false}
         allDaySlot={false}
         slotMinTime="00:00:00"
         slotMaxTime="24:00:00"
@@ -106,8 +114,9 @@ function CalendarView({ selectedRooms }) {
           minute: "2-digit",
           hour12: false,
         }}
-        dateClick={null}
-        timeZone="local"
+        timeZone={"local"}   // ✅ อยู่ใน props ของ FullCalendar
+        nowIndicator={true}  // ✅ เส้นบอกเวลาปัจจุบัน
+        navLinks={true}      // ✅ คลิกวันที่เพื่อเปลี่ยน view ได้
       />
     </div>
   );
