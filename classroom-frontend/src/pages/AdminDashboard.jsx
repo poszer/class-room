@@ -5,8 +5,8 @@ import { Table, Button, Badge, Form } from "react-bootstrap";
 function AdminDashboard() {
   const [bookings, setBookings] = useState([]);
   const [filter, setFilter] = useState("");
-  const API_URL = "http://127.0.0.1:8080/api/bookings";
-
+  //const API_URL = "http://127.0.0.1:8080/api/bookings";
+  const API_URL = "https://medipe2.psu.ac.th:3000/api/bookings"
   // ✅ โหลดข้อมูลทั้งหมด
   const fetchBookings = async () => {
     try {

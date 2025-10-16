@@ -14,8 +14,10 @@ function BookingModal({ onClose, onSuccess }) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
-  const API_BOOKINGS = "http://127.0.0.1:8080/api/bookings";
-  const API_ROOMS = "http://127.0.0.1:8080/api/rooms";
+  //const API_BOOKINGS = "http://127.0.0.1:8080/api/bookings";
+  const API_BOOKINGS = "https://medipe2.psu.ac.th:3000/api/bookings"
+  const API_ROOMS = "https://medipe2.psu.ac.th:3000/api/rooms";
+  //const API_ROOMS = "http://127.0.0.1:8080/api/rooms";
 
   // ✅ โหลดรายชื่อห้องเรียน
   useEffect(() => {
